@@ -31,7 +31,7 @@ body {
 
 
 .nav-bar {
-    height: 72px;
+    height: 76px;
     width: calc(100% - 4rem);
     background-color: var(--dark);
     display: flex;
@@ -40,14 +40,13 @@ body {
     padding: 0 8px;
     margin: 1.75rem auto 0;
     border-radius: 50px;
-    max-width: 1400px;
+    max-width: 1350px;
 }
 .nav-logo { height: 160px; width: 160px; flex-shrink: 0; }
 .logo {
     background-image: url("logo.png");
     height: 160px; width: 100%;
     background-size: cover;
-    margin-left: 0rem;
     margin-top: 0.2rem;
 }
 .font-logo { width: 220px; flex-shrink: 0; }
@@ -656,7 +655,7 @@ tbody tr:hover td { background: var(--card); }
         padding: 0 4px;
     }
     .nav-logo { height: 120px; width: 120px; }
-    .logo { height: 120px; margin-left: 0.75rem; margin-top: 0.2rem; }
+    .logo { height: 120px; margin-left: -1.35rem; margin-top: 0.2rem; }
     .font-logo { width: 160px; }
     .font { height: 120px; width: 160px; margin-right: 0.75rem; }
 
