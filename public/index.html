@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Split — Mitr</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet">
+</head>
+<body>
+
+
+    <nav class="nav-bar">
+        <div class="nav-logo">
+            <div class="logo"></div>
+        </div>
+        <div class="font-logo">
+            <div class="font"></div>
+        </div>
+    </nav>
+
+
+    <div class="container">
+
+
+        <div class="bill-container" id="bill-preview">
+            <div class="bill-header">
+                <img src="logo-font-black.png" id="head-font" alt="Mitr">
+                <p id="tagline">Clean Split, Solid Mitr.</p>
+            </div>
+
+            <div class="bill-body">
+
+                <div class="bill-trip-row" id="bill-trip-row" style="display:none">
+                    <span class="bill-label">Trip</span>
+                    <span class="bill-trip-name" id="bill-trip-name">—</span>
+                </div>
+
+                <!-- Members list -->
+                <div class="bill-members-section" id="bill-members-section" style="display:none">
+                    <div class="bill-section-title">
+                        <span class="dot pink"></span> Members
+                    </div>
+                    <div class="members-chips" id="members-chips"></div>
+                </div>
+
+
+                <div class="bill-expenses-section" id="bill-expenses-section" style="display:none">
+                    <div class="bill-section-title">
+                        <span class="dot green"></span> Expenses
+                    </div>
+                    <div class="expense-log" id="expense-log"></div>
+                </div>
+
+
+                <div class="bill-empty" id="bill-empty">
+                    
+                    <p>Start Preparing an Estimate</p>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="form-container">
+            <div class="form-group">
+
+
+                <div class="step-block" id="step-trip">
+                    <label class="step-label">
+                        <span class="step-num">Step 01</span> Trip Name
+                    </label>
+                    <div class="input-row">
+                        <input type="text" id="place" placeholder="e.g. Goa Trip, Manali 2025" autocomplete="off">
+                        <button class="icon-btn" id="set-trip" title="Set Trip">✔</button>
+                    </div>
+                </div>
+
+ 
+                <div class="step-block" id="step-count">
+                    <label class="step-label">
+                        <span class="step-num">Step 02</span> Number of Members
+                    </label>
+                    <div class="input-row">
+                        <input type="number" id="count" placeholder="e.g. 4" min="2" max="20" autocomplete="off">
+                        <button class="icon-btn" id="set-count" title="Set Count">✔</button>
+                    </div>
+                </div>
+
+           
+                <div class="step-block" id="step-members">
+                    <label class="step-label">
+                        <span class="step-num">Step 03</span> Member Names
+                        <span class="counter-badge" id="members-counter">0 / 0</span>
+                    </label>
+                    <div class="input-row">
+                        <input type="text" id="name" placeholder="Member's name" autocomplete="off">
+                        <button class="icon-btn pink" id="Add-mem" title="Add Member">+</button>
+                    </div>
+                    <p class="list-member" id="list-member"></p>
+                </div>
+
+
+                <div class="step-block" id="step-expenses">
+                    <label class="step-label">
+                        <span class="step-num">Step 04</span> Add Expense
+                    </label>
+                    <div class="exp-input-block">
+                        <textarea id="expense" placeholder="e.g. X paid ₹800 for movie tickets excluding Y" rows="2"></textarea>
+                        <div class="exp-actions">
+                            
+                            <button class="icon-btn pink wide" id="Add-exp">+ Add Expense</button>
+                        </div>
+                    </div>
+                </div>
+
+
+                <button id="submit">
+                    <span>Calculate Split-Wise Bill</span>
+                    <span class="btn-icon">→</span>
+                </button>
+
+            </div>
+        </div>
+    </div>
+
+
+    <div class="overlay" id="overlay" style="display:none">
+        <div class="popup" id="popup">
+            <div class="popup-header">
+                <div class="popup-title">
+                    <span class="popup-trip-name" id="popup-trip-name"></span>
+                    <span class="popup-sub">Split Summary</span>
+                </div>
+                <button class="close-btn" id="close-popup">✕</button>
+            </div>
+
+      
+            <div class="popup-loading" id="popup-loading">
+                <div class="spinner"></div>
+                <p>Please Wait, while we are preparing</p>
+            </div>
+
+
+            <div class="popup-results" id="popup-results" style="display:none">
+
+  
+                <div class="result-section">
+                    <h3 class="result-section-title">Expense Breakdown</h3>
+                    <div class="table-wrap">
+                        <table id="expense-table">
+                            <thead>
+                                <tr>
+                                    <th>Expense</th>
+                                    <th>Paid By</th>
+                                    <th>Amount</th>
+                                    <th>Split Among</th>
+                                    <th>Per Head</th>
+                                </tr>
+                            </thead>
+                            <tbody id="expense-table-body"></tbody>
+                        </table>
+                    </div>
+                </div>
+
+
+                <div class="result-section">
+                    <h3 class="result-section-title">Final Settlement</h3>
+                    <div class="table-wrap">
+                        <table id="settle-table">
+                            <thead>
+                                <tr>
+                                    <th>Member</th>
+                                    <th>Total Paid</th>
+                                    <th>Total Owed</th>
+                                    <th>Balance</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="settle-table-body"></tbody>
+                        </table>
+                    </div>
+                </div>
+
+
+                <div class="result-section">
+                    <h3 class="result-section-title">Who Pays Whom</h3>
+                    <div class="transactions-list" id="transactions-list"></div>
+                </div>
+            </div>
+
+            <div class="popup-error" id="popup-error" style="display:none">
+                <p><span id="error-msg"></span></p>
+                <button class="retry-btn" id="retry-btn">Retry</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
