@@ -47,7 +47,7 @@ body {
     background-image: url("logo.png");
     height: 160px; width: 100%;
     background-size: cover;
-    margin-left: 1.5rem;
+    margin-left: 0rem;
     margin-top: 0.2rem;
 }
 .font-logo { width: 220px; flex-shrink: 0; }
@@ -74,7 +74,7 @@ body {
 .bill-container {
     background: var(--card);
     flex: 1;
-    min-height: 620px;
+    min-height: 596px;
     border-radius: var(--radius);
     box-shadow: var(--shadow);
     display: flex;
